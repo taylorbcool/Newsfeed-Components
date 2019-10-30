@@ -112,3 +112,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(object) {
+  // creates card and elements
+  const article = document.createElement('div');
+
+  const title = document.createElement('h2');
+  title.textContent = object.title;
+
+  const date = document.createElement('p');
+  date.textContent = object.date;
+
+  const content1 = document.createElement('p');
+  content1.textContent = object.firstParagraph;
+
+  const content2 = document.createElement('p');
+  content2.textContent = object.secondParagraph;
+
+  const content3 = document.createElement('p');
+  content3.textContent = object.thirdParagraph;
+
+  const expandButton = document.createElement('span');
+
+  // appends elements
+  article.appendChild(title, date, content1, content2, content3, expandButton);
+
+  // adds classes
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // returns article
+  return article;
+};
+
+let newArticles = data.map((article) => {
+  let newArticle = createArticle(article)
+
+  return newArticle;
+});
+
+let articles = document.querySelector('.articles')
+
+newArticles.forEach((article) => {
+  articles.appendChild(article);
+});
