@@ -87,11 +87,18 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
   {
-    title: `Taylor's New Article`,
+    title: `What about Second Breakfast?`,
     date: `Oct 30th, 2019`,
-    firstParagraph: `It is with great consternation that I write this article. I do not want to simply fill it with lorem ipsum because then it will look like the rest of the articles.`,
+    firstParagraph: `Three Rings for the Elven-kings under the sky,
+    Seven for the Dwarf-lords in their halls of stone,
+    Nine for Mortal Men, doomed to die,
+    One for the Dark Lord on his dark throne
+    In the Land of Mordor where the Shadows lie.
+    One Ring to rule them all, One Ring to find them,
+    One Ring to bring them all and in the darkness bind them.
+    In the Land of Mordor where the Shadows lie.`,
 
-    secondParagraph: `And here is the second of my three paragraphs. It will probably be as short as the first. Possibly even shorter. Although perhaps it will be longer. I haven't decided just yet.`,
+    secondParagraph: `I am old, Gandalf. I don't look it, but I am beginning to feel it in my heart of hearts. Well-preserved indeed! Why, I feel all thin, sort of stretched, if you know what I mean: like butter that has been scraped over too much bread. That can't be right. I need a change, or something.`,
 
     thirdParagraph: `Moria... You fear to go into those mines. The dwarves delved too greedily and too deep. You know what they awoke in the darkness of Khazad-dum... shadow and flame.`
   }
@@ -143,12 +150,18 @@ function createArticle(object) {
 
   const expandButton = document.createElement('span');
   expandButton.addEventListener('click', () => {
-    expandButton.classList.toggle('article-open');
+    article.classList.toggle('article-open');
   })
+  expandButton.textContent = 'Read Article';
 
   // appends elements
-  article.appendChild(title, date, content1, content2, content3, expandButton);
-
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(content1);
+  article.appendChild(content2);
+  article.appendChild(content3);
+  article.appendChild(expandButton);
+  
   // adds classes
   article.classList.add('article');
   date.classList.add('date');
