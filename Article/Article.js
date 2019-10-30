@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: `Taylor's New Article`,
+    date: `Oct 30th, 2019`,
+    firstParagraph: `It is with great consternation that I write this article. I do not want to simply fill it with lorem ipsum because then it will look like the rest of the articles.`,
+
+    secondParagraph: `And here is the second of my three paragraphs. It will probably be as short as the first. Possibly even shorter. Although perhaps it will be longer. I haven't decided just yet.`,
+
+    thirdParagraph: `Moria... You fear to go into those mines. The dwarves delved too greedily and too deep. You know what they awoke in the darkness of Khazad-dum... shadow and flame.`
   }
 ];
 
@@ -107,7 +116,7 @@ const data = [
 
   Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each object and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
@@ -133,6 +142,9 @@ function createArticle(object) {
   content3.textContent = object.thirdParagraph;
 
   const expandButton = document.createElement('span');
+  expandButton.addEventListener('click', () => {
+    expandButton.classList.toggle('article-open');
+  })
 
   // appends elements
   article.appendChild(title, date, content1, content2, content3, expandButton);
