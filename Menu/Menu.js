@@ -47,7 +47,7 @@ function createMenu(array) {
   });
    
   // appends elements
-  header.appendChild(menu);
+  header.appendChild(menu); // must place menu in header
   menu.appendChild(menuList);
 
   // adds classes
@@ -56,7 +56,7 @@ function createMenu(array) {
   // click listener for menu-button
   const menuButton = document.querySelector('.header > img');
   menuButton.addEventListener('click', () => {
-    menu.classList.toggle('menu-open');
+    menu.classList.toggle('menu-open'); // attaches .menu-open to menu in order to display all menu
   })
   console.log(menuButton);
 
