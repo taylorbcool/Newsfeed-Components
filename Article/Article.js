@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: `What about Second Breakfast?`,
+    date: `Oct 30th, 2019`,
+    firstParagraph: `Three Rings for the Elven-kings under the sky,
+    Seven for the Dwarf-lords in their halls of stone,
+    Nine for Mortal Men, doomed to die,
+    One for the Dark Lord on his dark throne
+    In the Land of Mordor where the Shadows lie.
+    One Ring to rule them all, One Ring to find them,
+    One Ring to bring them all and in the darkness bind them.
+    In the Land of Mordor where the Shadows lie.`,
+
+    secondParagraph: `I am old, Gandalf. I don't look it, but I am beginning to feel it in my heart of hearts. Well-preserved indeed! Why, I feel all thin, sort of stretched, if you know what I mean: like butter that has been scraped over too much bread. That can't be right. I need a change, or something.`,
+
+    thirdParagraph: `Moria... You fear to go into those mines. The dwarves delved too greedily and too deep. You know what they awoke in the darkness of Khazad-dum... shadow and flame.`
   }
 ];
 
@@ -107,8 +123,62 @@ const data = [
 
   Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each object and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(object) {
+  // creates card and elements
+  const article = document.createElement('div');
+
+  const title = document.createElement('h2');
+  title.textContent = object.title;
+
+  const date = document.createElement('p');
+  date.textContent = object.date;
+
+  const content1 = document.createElement('p');
+  content1.textContent = object.firstParagraph;
+
+  const content2 = document.createElement('p');
+  content2.textContent = object.secondParagraph;
+
+  const content3 = document.createElement('p');
+  content3.textContent = object.thirdParagraph;
+
+  const expandButton = document.createElement('span');
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  expandButton.textContent = 'Read Article';
+
+  // appends elements
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(content1);
+  article.appendChild(content2);
+  article.appendChild(content3);
+  article.appendChild(expandButton);
+  
+  // adds classes
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // returns article
+  return article;
+};
+
+let newArticles = data.map((article) => {
+  let newArticle = createArticle(article)
+
+  return newArticle;
+});
+
+let articles = document.querySelector('.articles')
+
+newArticles.forEach((article) => {
+  articles.appendChild(article);
+});
